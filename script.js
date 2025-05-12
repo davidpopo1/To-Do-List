@@ -7,7 +7,8 @@ const todoUpdate = document.querySelector('.todo-update'); //update button
 
 const todo = (event) => {
     event.preventDefault();
-    if (todoInput.value === ''){
+    
+    if (todoInput.value === ''){ //Error message if input is empty
         const errorMessage = document.createElement('h4');
         errorMessage.innerText = 'Please enter a task';
         errorMessage.classList.add('error-message');
@@ -15,7 +16,8 @@ const todo = (event) => {
         setTimeout(() => {
             errorMessage.remove();
         }, 3000);
-    } else {
+    } else { //If input is not empty, create a new todo item w/delete and edit buttons
+        //Create a new div to hold the todo item that the delete and edit buttons append to
         const todoDiv = document.createElement('div');
         todoDiv.classList.add('todo');
 
@@ -38,8 +40,8 @@ const todo = (event) => {
             inputField.type = 'text';
             inputField.value = currentText;
             inputField.classList.add('edit-input');
-            editButton.style.display = 'none';
-            deleteButton.style.display = 'none';
+            editButton.style.display = 'none'; //hides edit button
+            deleteButton.style.display = 'none'; //hides delete button
 
             const updateButton = document.createElement('button');
             updateButton.innerText = 'Update';
@@ -67,7 +69,7 @@ const todo = (event) => {
         deleteButton.addEventListener('click', () => {
             todoDiv.remove();
         });
-        todoDiv.appendChild(deleteButton);
+        todoDiv.appendChild(deleteButton); // Append the delete button to the todoDiv
         //Delete Button End
     }
 }
