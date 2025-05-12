@@ -2,11 +2,19 @@ const todoInput = document.querySelector('.todo-input'); //user input field
 const todoSubmit = document.querySelector('.todo-submit'); //submit button
 const todoDelete = document.querySelector('.todo-delete'); //delete button
 const todoList = document.querySelector('.todo-list'); //Where submissions will be stored
+const todoEdit = document.querySelector('.todo-edit'); //edit button
+const todoUpdate = document.querySelector('.todo-update'); //update button
 
 const todo = (event) => {
     event.preventDefault();
     if (todoInput.value === ''){
-        alert('Please enter a task');
+        const errorMessage = document.createElement('h4');
+        errorMessage.innerText = 'Please enter a task';
+        errorMessage.classList.add('error-message');
+        document.body.prepend(errorMessage);
+        setTimeout(() => {
+            errorMessage.remove();
+        }, 3000);
     } else {
         const todoDiv = document.createElement('div');
         todoDiv.classList.add('todo');
@@ -16,6 +24,43 @@ const todo = (event) => {
         newTodo.classList.add('todo-item');
         todoDiv.appendChild(newTodo);
 
+        todoList.appendChild(todoDiv);
+        todoInput.value = '';
+
+        //Edit Button Start
+        const editButton = document.createElement('button');
+        editButton.innerText = 'Edit';
+        editButton.classList.add('todo-edit');
+        
+        editButton.addEventListener('click', () => {
+            const currentText = newTodo.innerText;
+            const inputField = document.createElement('input');
+            inputField.type = 'text';
+            inputField.value = currentText;
+            inputField.classList.add('edit-input');
+            editButton.style.display = 'none';
+            deleteButton.style.display = 'none';
+
+            const updateButton = document.createElement('button');
+            updateButton.innerText = 'Update';
+            updateButton.classList.add('todo-update');
+            updateButton.addEventListener('click', () => {
+                const updatedText = inputField.value.trim();
+                newTodo.innerText = updatedText || currentText;
+                inputField.replaceWith(newTodo);
+                updateButton.remove();
+                editButton.style.display = 'block';
+                deleteButton.style.display = 'block';
+            });
+
+            todoDiv.appendChild(updateButton);
+            newTodo.replaceWith(inputField);
+            inputField.focus();
+        });
+        todoDiv.appendChild(editButton); // Append the edit button to the todoDiv
+        //Edit Button End
+
+        //Delete Button Start
         const deleteButton = document.createElement('button');
         deleteButton.innerText = 'Delete';
         deleteButton.classList.add('todo-delete');
@@ -23,10 +68,7 @@ const todo = (event) => {
             todoDiv.remove();
         });
         todoDiv.appendChild(deleteButton);
-
-        todoList.appendChild(todoDiv);
-        todoInput.value = '';
+        //Delete Button End
     }
 }
-
 todoSubmit.addEventListener('click', todo);
