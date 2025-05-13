@@ -8,13 +8,27 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+        <section class="container">
+      <form id="task-form">
+        <h1>To-Do List</h1>
+        <div class="error-message"></div>
+        <div>
+          <label for="task">Task:</label>
+          <input type="text" id="task" placeholder='Enter task name' required>
+        </div>
+        <input class="btn" type="submit" value="Submit">
+      </form>
+
+      <ul id="tasks"></ul>
+    </section>
+    <!--
     <div class='container'>
         <input type='text' class='todo-input' placeholder='Add new to-do list item'>
         <button class='todo-submit'>Add</button>
         <ul class='todo-list'>
-            <!-- To-do items will be dynamically added here -->
+            To-do items will be dynamically added here 
         </ul>
-    </div>
+    </div>--> 
     <script src='script.js' defer></script>
 </body>
 </html>
