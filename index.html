@@ -4,22 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
         <section class="container">
       <form id="task-form">
-        <h1>To-Do List</h1>
+        <h1 class="formHeader">To-Do List</h1>
         <div class="error-message"></div>
-        <div>
-          <label for="task">Task:</label>
-          <input type="text" id="task" placeholder='Enter task name' required>
+        <div class="inputContainer">
+          <label for="task" class="label">Task:</label>
+          <input class="taskInput" type="text" id="task" placeholder='Enter task name' required maxlength="30">
         </div>
-        <input class="btn" type="submit" value="Submit">
+          <div class="buttonCenter">
+        <button class="btn" type="submit" value="Submit">Submit</button><br>
+        </div>
       </form>
 
-      <ul id="tasks"></ul>
+      <li class="tasks" id="tasks"></li>
     </section>
     <!--
     <div class='container'>

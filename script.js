@@ -27,8 +27,8 @@ function onSubmit(event) {
 
         //Edit Button Start
         const editButton = document.createElement('button');
-        editButton.innerText = 'Edit';
-        editButton.classList.add('todo-edit');
+        editButton.innerText = 'Modify';
+        editButton.classList.add('edit-button');
         
         editButton.addEventListener('click', () => {
             const currentText = newTask.innerText;
@@ -42,7 +42,7 @@ function onSubmit(event) {
             //Update Button Start
             const updateButton = document.createElement('button');
             updateButton.innerText = 'Update';
-            updateButton.classList.add('todo-update');
+            updateButton.classList.add('update-button');
             updateButton.addEventListener('click', () => {
                 const updatedText = inputField.value.trim();
                 newTask.innerText = updatedText || currentText;
