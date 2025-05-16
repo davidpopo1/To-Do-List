@@ -1,7 +1,7 @@
 taskForm = document.querySelector("#task-form");
 taskInput = document.querySelector(".taskInput");
 errorMessage = document.querySelector(".error-message");
-taskList = document.querySelector("#tasks");
+taskList = document.querySelector(".tasks");
 deleteButton = document.querySelector(".delete-button");
 editButton = document.querySelector(".todo-edit");
 updateButton = document.querySelector(".todo-update");
@@ -20,6 +20,7 @@ function onSubmit(e) {
         newTask.appendChild(document.createTextNode(taskInput.value));
         todoDiv.appendChild(newTask);
 
+        
         taskList.appendChild(todoDiv);
         taskInput.value = "";
 
@@ -67,6 +68,7 @@ function onSubmit(e) {
             newTask.remove();
             editButton.remove();
             deleteButton.remove();
+            
         });
         // Append delete button to the todoDiv
         todoDiv.appendChild(deleteButton);
