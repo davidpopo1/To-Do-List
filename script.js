@@ -1,19 +1,17 @@
-const taskForm = document.querySelector("#task-form");
-const taskInput = document.querySelector("#task");
-const errorMessage = document.querySelector(".error-message");
-const taskList = document.querySelector("#tasks");
-const deleteButton = document.querySelector(".delete-button");
-const editButton = document.querySelector(".todo-edit");
-const updateButton = document.querySelector(".todo-update");
+taskForm = document.querySelector("#task-form");
+taskInput = document.querySelector(".taskInput");
+errorMessage = document.querySelector(".error-message");
+taskList = document.querySelector("#tasks");
+deleteButton = document.querySelector(".delete-button");
+editButton = document.querySelector(".todo-edit");
+updateButton = document.querySelector(".todo-update");
 
 taskForm.addEventListener("submit", onSubmit);
 
-function onSubmit(event) {
-    event.preventDefault();
+function onSubmit(e) {
+    e.preventDefault();
     if (taskInput.value === "") {
-        errorMessage.innerText = "Please enter a task";
-        errorMessage.classList.add("error");
-        setTimeout(() => errorMessage.remove(), 3000);
+
     } else {
         const todoDiv = document.createElement('div');
         todoDiv.classList.add('todo');
@@ -27,7 +25,7 @@ function onSubmit(event) {
 
         //Edit Button Start
         const editButton = document.createElement('button');
-        editButton.innerText = 'Modify';
+        editButton.innerText = 'Edit';
         editButton.classList.add('edit-button');
         
         editButton.addEventListener('click', () => {
@@ -38,7 +36,7 @@ function onSubmit(event) {
             inputField.classList.add('edit-input');
             editButton.remove(); //hides edit button
             deleteButton.remove(); //hides delete button
-
+            
             //Update Button Start
             const updateButton = document.createElement('button');
             updateButton.innerText = 'Update';
@@ -57,8 +55,10 @@ function onSubmit(event) {
             newTask.replaceWith(inputField);
             inputField.focus();
         });
-        todoDiv.appendChild(editButton); // Append the edit button to the todoDiv
+        // Append the edit button to the todoDiv
+        todoDiv.appendChild(editButton); 
         //Edit Button End
+
         // Create delete button
         const deleteButton = document.createElement("button");
         deleteButton.innerText = "Delete";
@@ -68,12 +68,11 @@ function onSubmit(event) {
             editButton.remove();
             deleteButton.remove();
         });
-
-        // Append delete button to the list item
+        // Append delete button to the todoDiv
         todoDiv.appendChild(deleteButton);
-        newTask.replaceChild(inputField, newTask.firstChild);
     }
 }
+
 
 /*
 const todoInput = document.querySelector('.todo-input'); //user input field
